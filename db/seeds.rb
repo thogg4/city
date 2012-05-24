@@ -11,4 +11,4 @@ site_one.pages.create(title: "/", body: "home page for site one")
 
 
 site_two = Site.create(title: "second site", host: "two.codehog.com")
-site_two.page.create(title: "/", body: "home page for site two")
+site_two.pages.create(title: "/", body: "home page for site two")
