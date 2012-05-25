@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524211144) do
+ActiveRecord::Schema.define(:version => 20120525171334) do
+
+  create_table "layouts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "site_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "packages", :force => true do |t|
     t.string   "name"
@@ -24,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120524211144) do
     t.string   "path"
     t.text     "body"
     t.integer  "site_id"
+    t.integer  "layout_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     logger.debug site.inspect
     page = site.pages.where(path: path).first
     if page
-      render :inline => page.body
+      render :inline => page.body, :layout => page.layout
     else
       render :inline => "Page not found"
     end
