@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
     render_html(site, request.fullpath)
   end
 
-  def render_html(site, title)
+  def render_html(site, path)
     logger.debug site.inspect
-    page = site.pages.where(title: title).first
+    page = site.pages.where(path: path).first
     if page
       render :inline => page.body
     else

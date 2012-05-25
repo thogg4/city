@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120524211144) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
+    t.string   "path"
     t.text     "body"
     t.integer  "site_id"
     t.datetime "created_at", :null => false

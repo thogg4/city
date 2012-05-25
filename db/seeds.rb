@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 site_one = Site.create(title: "first site", host: "one.codehog.com")
-site_one.pages.create(title: "/", body: "home page for site one")
+site_one.pages.create(title: "/", path: "/",  body: "home page for site one")
 
 
 site_two = Site.create(title: "second site", host: "two.codehog.com")
-site_two.pages.create(title: "/", body: "home page for site two")
+site_two.pages.create(title: "page two", path:  "/", body: "home page for site two")
