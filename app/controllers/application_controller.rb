@@ -2,12 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def render_site
-
     site = if params[:site_id]
       Site.get_by_id(params[:site_id])
     else
       Site.get(request)
     end
+    logger.info request.fullpath
     render_html(site, request.fullpath)
   end
 
