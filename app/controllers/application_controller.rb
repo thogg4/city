@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     else
       Site.get(request)
     end
+    logger.info request.host
     logger.info request.fullpath
     render_html(site, request.fullpath)
   end
