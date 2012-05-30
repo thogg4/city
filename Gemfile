@@ -14,7 +14,7 @@ gem 'thin'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
-
+gem 'therubyracer'
 
 
 # To use ActiveModel has_secure_password
