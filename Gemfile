@@ -11,8 +11,9 @@ gem 'quiet_assets'
 # use thin server
 gem 'thin'
 
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails'
 gem 'jquery-rails'
+gem 'uglifier'
 
 
 

@@ -33,6 +33,8 @@ GEM
     daemons (1.1.8)
     erubis (2.7.0)
     eventmachine (0.12.10)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -94,6 +96,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.33)
+    uglifier (1.2.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
 
 PLATFORMS
   ruby
@@ -103,5 +108,6 @@ DEPENDENCIES
   mysql2
   quiet_assets
   rails (= 3.2.3)
-  sass-rails (~> 3.2.3)
+  sass-rails
   thin
+  uglifier
