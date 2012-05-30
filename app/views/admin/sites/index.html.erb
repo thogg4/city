@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>Sites</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Host</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= link_to site.title, admin_site_path(site) %></td>
+        <td><%= site.host %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

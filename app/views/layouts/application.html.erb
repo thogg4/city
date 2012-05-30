@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>City</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>City</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <% flash.each do |name, msg| %>                                                                                                         
+      <%= content_tag :div, msg, :class => "flash alert alert-#{name}" %>
+    <% end %>
 
-</body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li><%= link_to "Admin Home", admin_path %></li>
+            <li><%= link_to "Sites", admin_sites_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+     <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well">
+            <%= render "#{params[:controller]}/subnav" %>
+          </div>
+        </div>
+        <div class="span10">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>

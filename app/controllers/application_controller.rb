@@ -9,17 +9,37 @@ class ApplicationController < ActionController::Base
     end
     logger.info request.host
     logger.info request.fullpath
-    render_html(site, request.fullpath)
+    if site
+      render_html(site, request.fullpath.sub("/", ""))
+    else
+      site_not_found
+    end
   end
 
   def render_html(site, path)
     logger.debug site.inspect
     page = site.pages.where(path: path).first
     if page
-      render :inline => page.body, :layout => page.layout
+      if page.layout
+        html = page.layout.body.sub("{{ page }}", page.body)
+        render :inline => html
+      else
+        render :inline => page.body
+      end
     else
       render :inline => "Page not found"
     end
   end
+
+  def site_not_found
+    render :inline => "Site not found"
+  end
+
+
+  def get_site
+    @site = Site.find(params[:site_id])
+  end
+
+
 
 end

@@ -1,0 +1,22 @@
+<div class="page-header">
+  <div class="row-fluid">
+    <div class="span6">
+      <h1>Layouts for <%= @site.title %></h1>
+    </div>
+    <div class="span6">
+      <%= link_to "New Layout", new_admin_site_layout_path(@site), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <% @layouts.each do |layout| %>
+    <tr>
+      <td><%= link_to layout.title, admin_site_layout_path(@site, layout) %></td>
+    </tr>
+  <% end %>
+</table>

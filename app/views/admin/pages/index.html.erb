@@ -1,0 +1,28 @@
+<div class="page-header">
+  <div class="row-fluid">
+    <div class="span6">
+      <h1>Pages for <%= @site.title %></h1>
+    </div>
+    <div class="span6">
+      <%= link_to "New Page", new_admin_site_page_path(@site), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Path</th>
+      <th>Layout</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= link_to page.title, admin_site_page_path(@site, page) %></td>
+        <td><%= page.path %></td>
+        <td><%= page.layout ? page.layout.title : "No Layout" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
