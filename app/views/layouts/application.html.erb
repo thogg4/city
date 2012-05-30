@@ -27,7 +27,7 @@
       <div class="row-fluid">
         <div class="span2">
           <div class="well">
-            <%= render "#{params[:controller]}/subnav" %>
+            <%= render "#{params[:controller]}/subnav" rescue nil %>
           </div>
         </div>
         <div class="span10">

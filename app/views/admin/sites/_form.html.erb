@@ -1,0 +1,11 @@
+<%= form_for [:admin, @site] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :host %>
+  <%= f.text_field :host %>
+
+  <div class="form-actions">
+    <%= f.submit "Update Site", :class => "btn btn-success" %>
+  </div>
+<% end %>
