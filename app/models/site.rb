@@ -5,6 +5,7 @@ class Site < ActiveRecord::Base
   belongs_to :package
   has_many :layouts
   has_many :pages
+  has_many :includes
 
 
   def self.get_by_id(id)

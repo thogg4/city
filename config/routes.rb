@@ -2,7 +2,7 @@ City::Application.routes.draw do
 
   namespace :admin do
     resources :sites do
-      resources :layouts, :pages
+      resources :layouts, :pages, :includes
     end
   end
 

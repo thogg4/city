@@ -1,0 +1,25 @@
+<div class="page-header">
+  <div class="row-fluid">
+    <div class="span6">
+      <h1>Includes for <%= @site.title %></h1>
+    </div>
+    <div class="span6">
+      <%= link_to "New Include", new_admin_site_include_path(@site), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @includes.each do |include| %>
+      <tr>
+        <td><%= link_to include.title, admin_site_include_path(@site, include) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

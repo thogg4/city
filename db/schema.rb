@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525171334) do
+ActiveRecord::Schema.define(:version => 20120531170632) do
+
+  create_table "includes", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "layouts", :force => true do |t|
     t.string   "title"
@@ -33,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20120525171334) do
     t.text     "body"
     t.integer  "site_id"
     t.integer  "layout_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "renders", :force => true do |t|
+    t.integer  "page_id"
+    t.text     "render"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
