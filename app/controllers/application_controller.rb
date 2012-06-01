@@ -20,7 +20,12 @@ class ApplicationController < ActionController::Base
     logger.debug site.inspect
     page = site.pages.where(path: path).first
     if page
-      render :inline => page.renders.first.render
+      if page.layout
+        html = page.layout.body.sub("{{ page }}", page.renders.first.render)
+        render :inline => html
+      else
+        render :inline => page.renders.first.render
+      end
     else
       render :inline => "Page not found"
     end

@@ -2,7 +2,7 @@ class Include < ActiveRecord::Base
   attr_accessible :body, :title, :site_id
 
   # callbacks
-  before_save :save_pages
+  after_save :save_pages
 
   # relationships
   belongs_to :site
