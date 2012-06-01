@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
     page = site.pages.where(path: path).first
     if page
       if page.layout
-        html = page.layout.body.sub("{{ page }}", page.renders.first.render)
+        logger.debug "++++++++++++++++++++++++++++++++++++"
+        logger.debug page.layout.inspect
+        html = page.layout.renders.first.render.sub("{{ page }}", page.renders.first.render)
         render :inline => html
       else
         render :inline => page.renders.first.render

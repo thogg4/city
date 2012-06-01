@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :path, :body, :layout_id
+  attr_accessible :title, :path, :body, :site_id, :layout_id
 
   # callbacks
   before_save :create_render
@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   # relationships
   belongs_to :site
   belongs_to :layout
-  has_many :renders
+  has_many :renders, :as => :renderable
 
 
 
@@ -21,7 +21,7 @@ class Page < ActiveRecord::Base
     if matches.length > 0
       matches.each do |match|
         include_title = match.scan(/(?!i)(?!n)(?!c)(?!l)(?!u)(?!d)(?!e)[a-z]+/)[0].to_s
-        include = Include.where(title: include_title, site_id: self.layout.site_id).first
+        include = Include.where(title: include_title, site_id: self.site_id).first
         page = include ? page.sub(match, include.body) : page.sub(match, "No include found for #{include_title}")
       end
     end

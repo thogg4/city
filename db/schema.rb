@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(:version => 20120531170632) do
   end
 
   create_table "renders", :force => true do |t|
-    t.integer  "page_id"
+    t.integer  "renderable_id"
+    t.string   "renderable_type"
     t.text     "render"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "sites", :force => true do |t|
