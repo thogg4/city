@@ -1,8 +1,9 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :path, :body, :site_id, :layout_id
+  attr_accessible :title, :path, :body, :site_id, :layout_id, :redis_hash
 
   # callbacks
-  before_save :create_render
+  before_save :generate_redis_hash
+  after_save :create_render
 
   # relationships
   belongs_to :site
@@ -13,6 +14,9 @@ class Page < ActiveRecord::Base
 
 
   private
+  def generate_redis_hash
+    self.redis_hash = rand(36**10).to_s(36)
+  end
 
   def create_render
     self.renders.first.destroy rescue nil
@@ -25,7 +29,7 @@ class Page < ActiveRecord::Base
         page = include ? page.sub(match, include.body) : page.sub(match, "No include found for #{include_title}")
       end
     end
-    self.renders.create(render: page)
+    $redis.set(self.redis_hash, page)
   end
 
 end

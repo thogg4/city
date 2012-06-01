@@ -20,13 +20,18 @@ class ApplicationController < ActionController::Base
     logger.debug site.inspect
     page = site.pages.where(path: path).first
     if page
-      if page.layout
-        logger.debug "++++++++++++++++++++++++++++++++++++"
-        logger.debug page.layout.inspect
-        html = page.layout.renders.first.render.sub("{{ page }}", page.renders.first.render)
+      if page.layout # render the page within the layout
+        html = $redis.get(page.layout.redis_hash).sub("{{ page }}", $redis.get(page.redis_hash))
         render :inline => html
-      else
-        render :inline => page.renders.first.render
+      else # render just a page with no layout
+
+        redis_render = $redis.get(page.redis_hash)
+        if !redis_render
+          page.create_render
+        end
+        logger.info "Rendering page from Redis"
+        render :inline => redis_render
+
       end
     else
       render :inline => "Page not found"

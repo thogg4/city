@@ -13,7 +13,7 @@ class Admin::PagesController < ApplicationController
   end
   def create
     @page = @site.pages.build(params[:page])
-    if @page
+    if @page.save
       redirect_to admin_site_page_path(@site, @page), :notice => "Page created"
     else
       redirect_to new_admin_site_page_path(@site)

@@ -8,8 +8,5 @@ $(function() {
     workDelay: "500"
   });
 
-  zen_textarea.setup({
-    use_tab: true
-  });
 
 })

@@ -9,7 +9,7 @@
   <%= f.text_area :body %>
 
   <%= f.label "Layout" %>
-  <%= f.text_field :layout_id %>
+  <%= f.select :layout_id, @site.layouts.collect{ |l| [l.title, l.id] } %>
 
   <div class="form-actions">
     <%= f.submit :class => "btn btn-success" %>

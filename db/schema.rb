@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120531170632) do
     t.string   "title"
     t.text     "body"
     t.integer  "site_id"
+    t.string   "redis_hash"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120531170632) do
     t.text     "body"
     t.integer  "site_id"
     t.integer  "layout_id"
+    t.string   "redis_hash"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

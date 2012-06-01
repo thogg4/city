@@ -1,7 +1,9 @@
 class Layout < ActiveRecord::Base
   attr_accessible :body, :title
 
-  before_save :create_render
+  # callbacks
+  before_save :generate_redis_hash
+  after_save :create_render
 
   # relationships
   belongs_to :site
@@ -10,6 +12,9 @@ class Layout < ActiveRecord::Base
 
 
   private
+  def generate_redis_hash
+    self.redis_hash = rand(36**11).to_s(36)
+  end
 
   def create_render
     self.renders.first.destroy rescue nil
@@ -22,7 +27,7 @@ class Layout < ActiveRecord::Base
         layout = include ? layout.sub(match, include.body) : layout.sub(match, "No include found for #{include_title}")
       end
     end
-    self.renders.create(render: layout)
+    $redis.set(self.redis_hash, layout)
   end
 
 end

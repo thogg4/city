@@ -4,6 +4,7 @@ class CreateLayouts < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.integer :site_id
+      t.string :redis_hash
 
       t.timestamps
     end
