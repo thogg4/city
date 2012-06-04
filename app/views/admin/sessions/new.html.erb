@@ -1,9 +1,12 @@
+<div class="page-header">
+  <h1>Log In</h1>
+</div>
 <%= form_tag admin_login_path do %>
   <%= label_tag :email %>
   <%= text_field_tag :email %>
 
   <%= label_tag :password %>
-  <%= text_field_tag :password %>
+  <%= password_field_tag :password %>
 
   <div class="form-actions">
     <%= submit_tag "Login", :class => "btn btn-success" %>
