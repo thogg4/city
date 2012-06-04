@@ -1,6 +1,14 @@
 class Admin::SitesController < ApplicationController
+
+  before_filter :should_be_logged_in
+  before_filter :should_own_site, :except => [:index]
+
   def index
-    @sites = Site.all
+    if current_user.admin
+      @sites = Site.all
+    else
+      @sites = current_user.sites
+    end
   end
   def show
     @site = Site.find(params[:id])

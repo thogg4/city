@@ -12,6 +12,10 @@ gem 'quiet_assets'
 # use thin server
 gem 'thin'
 
+# authentication
+gem 'bcrypt-ruby'
+
+# assets
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

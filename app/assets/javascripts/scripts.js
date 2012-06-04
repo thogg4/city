@@ -1,5 +1,5 @@
 $(function() {
-  $(".flash").delay(5000).fadeOut()
+  $(".flash").delay(5000).fadeOut().remove()
 
 
   CodeMirror.fromTextArea($("textarea")[0], {

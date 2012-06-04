@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
 
   attr_accessible :title, :domain, :host
   # relationships
+  belongs_to :user
   belongs_to :package
   has_many :layouts
   has_many :pages

@@ -16,8 +16,15 @@
       <div class="navbar-inner">
         <div class="container">
           <ul class="nav">
-            <li><%= link_to "Admin Home", admin_path %></li>
-            <li><%= link_to "Sites", admin_sites_path %></li>
+            <% if current_user %>
+              <li><%= link_to "Sites", admin_sites_path %></li>
+              <li><%= link_to "My Account", admin_user_path(current_user) %></li>
+            <% end %>
+          </ul>
+          <ul class="nav pull-right">
+            <% if current_user %>
+              <li><%= link_to "Logout", admin_logout_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>

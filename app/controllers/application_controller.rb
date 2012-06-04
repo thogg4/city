@@ -47,6 +47,29 @@ class ApplicationController < ActionController::Base
     @site = Site.find(params[:site_id])
   end
 
+  def should_be_logged_in
+    if !current_user
+      flash[:error] = "You have to be logged in to get to this page"
+      redirect_to admin_login_path
+    end
+  end
 
+  def should_own_site
+    if !current_user.admin
+      site = params[:site_id] ? Site.find(params[:site_id]) : Site.find(params[:id])
+      if  site.user_id != current_user.id
+        flash[:error] = "You do not have access to that page"
+        redirect_to admin_sites_path
+      end
+    end
+  end
+
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  helper_method :current_user
 
 end

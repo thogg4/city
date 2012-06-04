@@ -1,0 +1,11 @@
+<%= form_for [:admin,  @user] do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <div class="form-actions">
+    <%= f.submit "Create User", :class => "btn btn-success" %>
+  </div>
+<% end %>

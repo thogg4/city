@@ -1,6 +1,6 @@
 class Admin::LayoutsController < ApplicationController
 
-  before_filter :get_site
+  before_filter :get_site, :should_be_logged_in, :should_own_site
 
   def index
     @layouts = @site.layouts
