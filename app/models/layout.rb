@@ -19,14 +19,20 @@ class Layout < ActiveRecord::Base
   def create_render
     self.renders.first.destroy rescue nil
     layout = self.body
-    matches = layout.scan(/{{\s*include\s*[^{}]+\s*}}/)
-    if matches.length > 0
-      matches.each do |match|
-        include_title = match.scan(/(?!i)(?!n)(?!c)(?!l)(?!u)(?!d)(?!e)[a-z]+/)[0].to_s
+    # first find and ludes
+    includes = layout.scan(/{{\s*include\s*[^{}]+\s*}}/)
+    if includes.length > 0
+      includes.each do |i|
+        include_title = i.scan(/(?!i)(?!n)(?!c)(?!l)(?!u)(?!d)(?!e)[a-z]+/)[0].to_s
         include = Include.where(title: include_title, site_id: self.site_id).first
-        layout = include ? layout.sub(match, include.body) : layout.sub(match, "No include found for #{include_title}")
+        layout = include ? layout.sub(i, include.body) : layout.sub(i, "No include found for #{include_title}")
       end
     end
+
+    layout = layout.sub("{{ css }}", "<link href='http://#{self.site.host}/assets/global.css' media='screen' rel='stylesheet' type='text/css'>")
+
+    layout = layout.sub("{{ js }}", "<script src='http://#{self.site.host}/assets/global.js' type='text/javascript'></script>")
+
     $redis.set(self.redis_hash, layout)
   end
 
