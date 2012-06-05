@@ -23,7 +23,7 @@ class Layout < ActiveRecord::Base
     includes = layout.scan(/{{\s*include\s*[^{}]+\s*}}/)
     if includes.length > 0
       includes.each do |i|
-        include_title = i.scan(/(?!i)(?!n)(?!c)(?!l)(?!u)(?!d)(?!e)[a-z]+/)[0].to_s
+        include_title = i.scan(/{{\s*include\s*(.*?)\s*}}/)[0].to_s
         include = Include.where(title: include_title, site_id: self.site_id).first
         layout = include ? layout.sub(i, include.body) : layout.sub(i, "No include found for #{include_title}")
       end
