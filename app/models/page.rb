@@ -24,7 +24,7 @@ class Page < ActiveRecord::Base
     matches = page.scan(/{{\s*include\s*[^{}]+\s*}}/)
     if matches.length > 0
       matches.each do |match|
-        include_title = match.scan(/{{\s*include\s*(.*?)\s*}}/)[0].to_s
+        include_title = match.scan(/{{\s*include\s*(.*?)\s*}}/)[0][0].to_s
         include = Include.where(title: include_title, site_id: self.site_id).first
         page = include ? page.sub(match, include.body) : page.sub(match, "No include found for #{include_title}")
       end
