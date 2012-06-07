@@ -1,4 +1,6 @@
 class Layout < ActiveRecord::Base
+  include ActionView::Helpers
+
   attr_accessible :body, :title
 
   # callbacks
@@ -29,9 +31,9 @@ class Layout < ActiveRecord::Base
       end
     end
 
-    layout = layout.sub("{{ css }}", "<link href='http://#{self.site.host}/assets/global.css' media='screen' rel='stylesheet' type='text/css'>")
+    layout = layout.sub("{{ css }}", "<link href='http://c15079289.r89.cf2.rackcdn.com/global.css' media='screen' rel='stylesheet' type='text/css'>")
 
-    layout = layout.sub("{{ js }}", "<script src='http://#{self.site.host}/assets/global.js' type='text/javascript'></script>")
+    layout = layout.sub("{{ js }}", "<script src='http://c15079289.r89.cf2.rackcdn.com/global.js' type='text/javascript'></script>")
 
     $redis.set(self.redis_hash, layout)
   end
