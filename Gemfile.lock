@@ -127,7 +127,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   quiet_assets
-  rails (= 3.2.3)
+  rails
   redis
   resque (= 1.9)
   sass-rails
