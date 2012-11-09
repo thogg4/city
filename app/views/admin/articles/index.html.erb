@@ -1,0 +1,27 @@
+<div class="page-header">
+  <div class="row-fluid">
+    <div class="span6">
+      <h1>Articles for <%= @site.title %></h1>
+    </div>
+    <div class="span6">
+      <%= link_to "New Article", new_admin_site_article_path(@site), :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, admin_site_article_path(@site, article) %></td>
+        <td><%= article.tags %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

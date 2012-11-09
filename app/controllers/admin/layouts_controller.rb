@@ -16,8 +16,8 @@ class Admin::LayoutsController < ApplicationController
     if @layout.save
       redirect_to admin_site_layout_path(@site, @layout), :notice => "Layout created"
     else
-      redirect_to new_admin_site_layout_path(@site)
       flash[:error] = "Something bad happened and the layout was not created"
+      redirect_to new_admin_site_layout_path(@site)
     end
   end
   def update
@@ -25,8 +25,8 @@ class Admin::LayoutsController < ApplicationController
     if @layout.update_attributes(params[:layout])
       redirect_to admin_site_layout_path(@site, @layout), :notice => "Layout updated"
     else
-      redirect_to admin_site_layout_path(@site, @layout)
       flash[:error] = "Something bad happened and the layout was not updated"
+      redirect_to admin_site_layout_path(@site, @layout)
     end
   end
 end

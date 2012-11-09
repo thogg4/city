@@ -2,6 +2,7 @@
   <ul class="nav nav-list">
     <li><%= link_to "Open Site", "http://#{@site.host}", :target => "_blank" %></li>
     <li><%= link_to @site.title, admin_site_path(@site) %></li>
+    <li><%= link_to "Articles", admin_site_articles_path(@site) %></li>
     <li><%= link_to "Pages", admin_site_pages_path(@site) %></li>
     <li><%= link_to "Layouts", admin_site_layouts_path(@site) %></li>
     <li><%= link_to "Includes", admin_site_includes_path(@site) %></li>

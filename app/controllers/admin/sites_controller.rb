@@ -21,8 +21,8 @@ class Admin::SitesController < ApplicationController
     if @site.save
       redirect_to admin_site_path(@site), :notice => "Site created"
     else
-      redirect_to new_admin_site_path
       flash[:error] = "Something happened and the site was not created"
+      redirect_to new_admin_site_path
     end
   end
   def update
@@ -30,8 +30,8 @@ class Admin::SitesController < ApplicationController
     if @site.update_attributes(params[:site])
       redirect_to admin_site_path(@site), :notice => "Site updated"
     else
-      redirect_to admin_site_path(@site)
       flash[:error] = "Something happened and the site was not updated"
+      redirect_to admin_site_path(@site)
     end
   end
 end

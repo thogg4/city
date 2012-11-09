@@ -8,10 +8,6 @@
   </head>
   <body>
 
-    <% flash.each do |name, msg| %>                                                                                                         
-      <%= content_tag :div, msg, :class => "flash alert alert-#{name}" %>
-    <% end %>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -43,5 +39,8 @@
       </div>
     </div>
 
+    <% flash.each do |name, msg| %>                                                                                                         
+      <%= content_tag :div, msg, :class => "flash alert alert-#{name}" %>
+    <% end %>
   </body>
 </html>

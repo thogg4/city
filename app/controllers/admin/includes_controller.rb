@@ -16,8 +16,8 @@ class Admin::IncludesController < ApplicationController
     if @include.save
       redirect_to admin_site_include_path(@site, @include), :notice => "Include created"
     else
-      redirect_to new_admin_site_include_path(@site)
       flash[:error] = "Something bad happened and the include was not created"
+      redirect_to new_admin_site_include_path(@site)
     end
   end
   def update
@@ -25,8 +25,8 @@ class Admin::IncludesController < ApplicationController
     if @include.update_attributes(params[:include])
       redirect_to admin_site_include_path(@site, @include), :notice => "Include updated"
     else
-      redirect_to admin_site_include_path(@site, @include)
       flash[:error] = "Something bad happened and the include was not updated"
+      redirect_to admin_site_include_path(@site, @include)
     end
   end
 end

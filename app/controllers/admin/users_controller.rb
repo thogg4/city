@@ -11,8 +11,8 @@ class Admin::UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to admin_user_path(@user), :notice => "User created"
     else
-      redirect_to new_admin_user_path
       flash[:error] = "Something went wrong and the user was not created"
+      redirect_to new_admin_user_path
     end
   end
 end

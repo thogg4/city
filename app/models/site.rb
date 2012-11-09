@@ -7,6 +7,7 @@ class Site < ActiveRecord::Base
   has_many :layouts
   has_many :pages
   has_many :includes
+  has_many :articles
 
 
   def self.get_by_id(id)

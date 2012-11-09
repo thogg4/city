@@ -12,8 +12,8 @@ class Admin::SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to admin_user_path(user), :notice => "Logged in"
     else
-      redirect_to admin_login_path
       flash[:error] = "Not logged in"
+      redirect_to admin_login_path
     end
   end
   def destroy
