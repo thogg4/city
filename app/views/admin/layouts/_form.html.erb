@@ -3,7 +3,10 @@
   <%= f.text_field :title %>
 
   <%= f.label :body %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, :class => 'ace-editor' %>
+  <div class='ace-editor-wrapper'>
+    <div id='ace-editor'></div>
+  </div>
   <p class="help-block">
     Use {{ page }} to show where the page should be placed
   </p>

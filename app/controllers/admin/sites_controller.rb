@@ -1,7 +1,7 @@
 class Admin::SitesController < ApplicationController
 
   before_filter :should_be_logged_in
-  before_filter :should_own_site, :except => [:index]
+  before_filter :should_own_site, :except => [:index, :new, :create]
 
   def index
     if current_user.admin

@@ -11,3 +11,16 @@ form.full {
   margin: 0px;
   width: 100%;
 }
+
+.ace-editor-wrapper {
+  position: relative;
+  height: 400px;
+  width: 992px;
+}
+#ace-editor { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

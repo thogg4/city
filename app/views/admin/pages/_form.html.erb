@@ -9,7 +9,10 @@
   </p>
 
   <%= f.label :body %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, :class => 'ace-editor' %>
+  <div class='ace-editor-wrapper'>
+    <div id='ace-editor'></div>
+  </div>
 
   <%= f.label "Layout" %>
   <%= f.select :layout_id, @site.layouts.collect{ |l| [l.title, l.id] } %>

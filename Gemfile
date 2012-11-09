@@ -20,6 +20,7 @@ gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
 gem 'therubyracer'
+gem 'coffee-script'
 
 # background tasks
 gem 'resque', "1.9", :require => "resque/server"

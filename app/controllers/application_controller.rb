@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   def should_own_site
     if !current_user.admin
       site = params[:site_id] ? Site.find(params[:site_id]) : Site.find(params[:id])
-      if  site.user_id != current_user.id
+      if site.user_id != current_user.id
         flash[:error] = "You do not have access to that page"
         redirect_to admin_sites_path
       end
