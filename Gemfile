@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails'
+gem 'json', "~> 1.8.0"
 
 # datastores
-gem 'mysql2'
+gem 'pg'
 gem 'redis'
 
 # stop showing assets in log
@@ -23,4 +24,4 @@ gem 'therubyracer'
 gem 'coffee-script'
 
 # background tasks
-gem 'resque', "1.9", :require => "resque/server"
+gem 'resque', "1.24.1", :require => "resque/server"
